@@ -1,0 +1,28 @@
+[build]
+  command = "bun run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[images]
+  remote_images = [
+    "https://i.postimg.cc/.*",
+    "https://ext.same-assets.com/.*",
+    "https://media.gettyimages.com/.*",
+    "https://media.istockphoto.com/.*",
+    "https://c8.alamy.com/.*",
+    "https://static.vecteezy.com/.*",
+    "https://thumbs.dreamstime.com/.*"
+  ]
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Access-Control-Allow-Origin = "*"
